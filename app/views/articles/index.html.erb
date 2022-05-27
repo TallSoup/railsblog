@@ -1,0 +1,21 @@
+<h1>Learning Rails Blog</h1>
+
+<h3>
+The blog has 
+<%= Article.public_count %> article<% if Article.public_count != 1 then %>s<% end %>!
+</h3>
+
+
+<ul>
+  <% @articles.each do |article| %>
+    <% unless article.archived? %>
+      <li>
+        <a href="<%= article_path(article) %>" >
+          <%= article.title %>
+        </a>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
+
+<%= link_to "Write a new blog post", new_article_path %>
